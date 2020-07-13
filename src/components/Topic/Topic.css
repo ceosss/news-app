@@ -1,0 +1,31 @@
+.topic {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 15px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  margin: 10px 10px;
+  height: max-content;
+  white-space: nowrap;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.topic h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+}
+
+.topic:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 800px) {
+  .topic {
+    margin: 8px 10px;
+  }
+}

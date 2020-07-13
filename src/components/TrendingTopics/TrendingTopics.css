@@ -1,0 +1,19 @@
+.trending-topics {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.trending-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 800px) {
+  .trending-topics {
+    width: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+/* .cards {
+  background-color: white;
+  /* width: 300px;
+    height: 200px; */
+/* border-radius: 13px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); */
+/* margin: 50px;
+    padding: 10px; */
+/* } */
+
+.img {
+  width: 100%;
+  height: 45%;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: center;
+}
+
+.description {
+  font-weight: 300;
+}
+
+.source {
+  color: #929292;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
