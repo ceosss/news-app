@@ -14,7 +14,7 @@ export const getNews = async (query) => {
   query = query.replace(/ /g, "");
 
   if (!query || query === "headlines") {
-    getNewsURL = `http://newsapi.org/v2/top-headlines?country=in&sortBy=publishedAt&apiKey=9e7d7cc5ef0b45b6bb33680e579917dc`;
+    getNewsURL = `https://newsapi.org/v2/top-headlines?country=in&sortBy=publishedAt&apiKey=9e7d7cc5ef0b45b6bb33680e579917dc`;
   } else {
     getNewsURL = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&apiKey=9e7d7cc5ef0b45b6bb33680e579917dc`;
   }
