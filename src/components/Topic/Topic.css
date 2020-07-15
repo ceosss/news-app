@@ -10,7 +10,7 @@
   margin: 10px 10px;
   height: max-content;
   white-space: nowrap;
-  transition: 300ms ease-in-out;
+  transition: 400ms;
   cursor: pointer;
 }
 
@@ -21,7 +21,12 @@
 }
 
 .topic:hover {
-  transform: scale(1.05);
+  transform: scale(0.9, 0.9);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.selected-topic {
+  background-color: #d4edfd;
 }
 
 @media screen and (max-width: 800px) {

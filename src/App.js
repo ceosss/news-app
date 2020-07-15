@@ -12,7 +12,9 @@ class App extends Component {
   state = {
     loading: false,
     news: [],
+    currentTopic: "0",
   };
+
   handleLoading = (value) => {
     if (value === true) {
       this.setState({ loading: true });
@@ -20,15 +22,19 @@ class App extends Component {
       this.setState({ loading: false });
     }
   };
-  handleTopicChange = async (id) => {
+  handleTopicChange = async (id, key) => {
     this.handleLoading(true);
     let {
-      data: { articles },
+      data: { value },
     } = await getNews(id);
 
-    this.setState({ news: articles });
+    this.setState({ news: value, currentTopic: key });
     this.handleLoading(false);
   };
+
+  async componentDidMount() {
+    await this.handleTopicChange(this.state.currentTopic, 0);
+  }
 
   render() {
     return (
@@ -48,9 +54,10 @@ class App extends Component {
           <TrendingTopics
             handleTopicChange={this.handleTopicChange}
             handleLoading={this.handleLoading}
+            currentTopic={this.state.currentTopic}
           />
         </div>
-        {this.state.news.length ? (
+        {this.state.news.length !== 0 ? (
           <div className="cards">
             <Cards data={this.state.news} />
           </div>

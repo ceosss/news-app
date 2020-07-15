@@ -35,18 +35,20 @@ class TrendingTopics extends Component {
 
   render() {
     const { trending_topics } = this.state;
-    const { handleTopicChange } = this.props;
+    const { handleTopicChange, currentTopic } = this.props;
     return (
       <div className="trending-container">
         <div className="trending">
           <h3>TRENDING TOPICS</h3>
         </div>
         <div className="trending-topics">
-          {trending_topics.map((topic) => (
+          {trending_topics.map((topic, index) => (
             <Topic
               data={topic}
               key={topic.id}
+              keys={index}
               handleTopicChange={handleTopicChange}
+              isCurrentTopic={index === currentTopic ? true : false}
             />
           ))}
         </div>
