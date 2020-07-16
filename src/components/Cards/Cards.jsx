@@ -75,6 +75,6 @@ const CardStyle = {
   borderRadius: "15px",
   boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
   padding: "15px 10px",
-  width: "375px",
+  width: "365px",
   height: "700px",
 };
