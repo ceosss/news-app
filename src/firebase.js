@@ -1,3 +1,4 @@
+import firebase from "firebase";
 var firebaseConfig = {
   apiKey: "AIzaSyCpzxA4h82fLbjKiTYxkzcRulcLioucnXs",
   authDomain: "minute-news.firebaseapp.com",

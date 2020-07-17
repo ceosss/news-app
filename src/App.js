@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 
-import "./App.css";
 import Header from "./components/Header/Header";
-
 import TrendingTopics from "./components/TrendingTopics/TrendingTopics";
 import { getNews } from "./REQUESTS";
 import ClipLoader from "react-spinners/ClipLoader";
 import Cards from "./components/Cards/Cards";
+
+import "./App.css";
 
 class App extends Component {
   state = {
     loading: false,
     news: [],
     currentTopic: "0",
+    user: null,
   };
 
   handleLoading = (value) => {
@@ -31,6 +32,9 @@ class App extends Component {
     this.setState({ news: value, currentTopic: key });
     this.handleLoading(false);
   };
+  handleLogin = (user) => {
+    this.setState({ user });
+  };
 
   async componentDidMount() {
     await this.handleTopicChange(this.state.currentTopic, 0);
@@ -39,7 +43,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header
+          handleLogin={this.handleLogin}
+          handleLoading={this.handleLoading}
+        />
         {this.state.loading ? (
           <div className="spinner">
             <ClipLoader
@@ -50,16 +57,20 @@ class App extends Component {
           </div>
         ) : null}
 
-        <div className="trending-topics-div">
-          <TrendingTopics
-            handleTopicChange={this.handleTopicChange}
-            handleLoading={this.handleLoading}
-            currentTopic={this.state.currentTopic}
-          />
-        </div>
-        {this.state.news.length !== 0 ? (
-          <div className="cards">
-            <Cards data={this.state.news} />
+        {this.state.user != null ? (
+          <div>
+            <div className="trending-topics-div">
+              <TrendingTopics
+                handleTopicChange={this.handleTopicChange}
+                handleLoading={this.handleLoading}
+                currentTopic={this.state.currentTopic}
+              />
+            </div>
+            {this.state.news.length !== 0 ? (
+              <div className="cards">
+                <Cards data={this.state.news} />
+              </div>
+            ) : null}
           </div>
         ) : null}
         <div className="footer">
