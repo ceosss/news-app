@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import Header from "./components/Header/Header";
 import TrendingTopics from "./components/TrendingTopics/TrendingTopics";
 import { getNews } from "./REQUESTS";
-import ClipLoader from "react-spinners/ClipLoader";
 import Cards from "./components/Cards/Cards";
 
 import "./App.css";
+import Spinner from "./components/Spinner/Spinner";
 
 class App extends Component {
   state = {
@@ -24,13 +24,14 @@ class App extends Component {
     }
   };
   handleTopicChange = async (id, key) => {
-    this.handleLoading(true);
+    // this.handleLoading(true);
+    this.setState({ loading: true });
     let {
       data: { value },
     } = await getNews(id);
 
-    this.setState({ news: value, currentTopic: key });
-    this.handleLoading(false);
+    this.setState({ news: value, currentTopic: key, loading: false });
+    // this.handleLoading(false);
   };
   handleLogin = (user) => {
     this.setState({ user });
@@ -47,15 +48,12 @@ class App extends Component {
           handleLogin={this.handleLogin}
           handleLoading={this.handleLoading}
         />
-        {this.state.loading ? (
+        {/* {this.state.loading ? (
           <div className="spinner">
-            <ClipLoader
-              size={60}
-              color={"#123abc"}
-              loading={this.state.loading}
-            />
+            
+            <Spinner/>
           </div>
-        ) : null}
+        ) : null} */}
 
         {this.state.user != null ? (
           <div>
@@ -66,7 +64,9 @@ class App extends Component {
                 currentTopic={this.state.currentTopic}
               />
             </div>
-            {this.state.news.length !== 0 ? (
+            {this.state.loading ? (
+              <Spinner />
+            ) : this.state.news.length !== 0 ? (
               <div className="cards">
                 <Cards data={this.state.news} />
               </div>

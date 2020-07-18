@@ -6,7 +6,28 @@
 
 .login h3 {
   cursor: pointer;
+  background-color: white;
+  padding: 7px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: 400ms ease-in-out;
 }
+
+.login h3:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login h3 img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
 .in {
   color: green;
 }
