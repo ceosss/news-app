@@ -35,9 +35,11 @@ export const getNews = async (query) => {
   }
   console.log("URL: ", getNewsURL);
 
+  const key = await axios.get("https://minute-news.firebaseio.com/key.json");
+
   const news = await axios.get(getNewsURL, {
     headers: {
-      "Ocp-Apim-Subscription-Key": "f999c190e6ab49069c22cfb157be790c",
+      "Ocp-Apim-Subscription-Key": key.data,
     },
   });
   console.log("news: ", news);
