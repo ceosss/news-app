@@ -39,15 +39,15 @@ class Cards extends Component {
 
   render() {
     const { data } = this.props;
-    const CardStyle = {
-      backgroundColor: this.state.color,
-      borderRadius: "15px",
-      boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
-      padding: "15px 10px",
-      width: "375px",
-      height: "700px",
-      positions: "unset",
-    };
+    // const CardStyle = {
+    //   backgroundColor: this.state.color,
+    //   borderRadius: "15px",
+    //   boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
+    //   padding: "15px 10px",
+    //   width: "375px",
+    //   height: "700px",
+    //   positions: "unset",
+    // };
 
     return (
       // <CardWrapper style={{ paddingBottom: "100px", paddingTop: "30px" }}>

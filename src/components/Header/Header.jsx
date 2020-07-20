@@ -23,7 +23,6 @@ class Header extends Component {
         // this.props.handleLoading(false);
       }
       this.setState({ loading: false });
-      console.log(this.state.user.photoURL);
     });
   }
   login = () => {
