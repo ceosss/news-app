@@ -56,7 +56,7 @@ class App extends Component {
         ) : null} */}
 
         {this.state.user != null ? (
-          <div>
+          <div className="container">
             <div className="trending-topics-div">
               <TrendingTopics
                 handleTopicChange={this.handleTopicChange}

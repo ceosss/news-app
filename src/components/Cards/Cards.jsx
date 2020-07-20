@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Card, CardWrapper } from "react-swipeable-cards";
+// import { Card, CardWrapper } from "react-swipeable-cards";
+
+import ReactCardCarousel from "react-card-carousel";
+
 import Background from "./background3.jpg";
 
 import "./Cards.css";
@@ -28,7 +31,7 @@ class Cards extends Component {
       "#A1C9F1",
       "#F1E8D9",
     ];
-    const random = Math.floor(Math.random() * colors.length + 1);
+    const random = Math.floor(Math.random() * colors.length);
     console.log(colors[random]);
 
     return colors[random];
@@ -43,47 +46,58 @@ class Cards extends Component {
       padding: "15px 10px",
       width: "375px",
       height: "700px",
+      positions: "unset",
     };
 
     return (
-      <CardWrapper style={{ paddingBottom: "100px", paddingTop: "30px" }}>
-        {data.map((e, index) => (
-          <Card key={index} style={CardStyle} className="card-class">
-            <img
-              src={e.image ? e.image.thumbnail.contentUrl : Background}
-              alt={e.title}
-              className="img"
-            />
-            <span className="title">
-              <h3>{e.name}</h3>
-            </span>
+      // <CardWrapper style={{ paddingBottom: "100px", paddingTop: "30px" }}>
+      <div
+        // style={CONTAINER_STYLE}
+        className="container-style"
+      >
+        <ReactCardCarousel autoplay={false} autoplay_speed={15000}>
+          {data.map((e, index) => (
+            <div
+              key={index}
+              style={{ backgroundColor: this.state.color }}
+              className="card-class"
+            >
+              <img
+                src={e.image ? e.image.thumbnail.contentUrl : Background}
+                alt={e.title}
+                className="img"
+              />
+              <span className="title">
+                <h3>{e.name}</h3>
+              </span>
 
-            <span className="description">
-              <p>
-                {e.description.length > 310
-                  ? e.description.substring(0, 310) + "..."
-                  : e.description}
-              </p>
-            </span>
+              <span className="description">
+                <p>
+                  {e.description.length > 310
+                    ? e.description.substring(0, 310) + "..."
+                    : e.description}
+                </p>
+              </span>
 
-            <span className="source">
-              <p>
-                Source:{" "}
-                {e.provider[0].name
-                  ? e.provider[0].name.length > 20
-                    ? e.provider[0].name.substring(0, 20) + "..."
-                    : e.provider[0].name
-                  : "Unknown"}
-              </p>
-              <p>
-                <a href={e.url} target="blank">
-                  Read More
-                </a>
-              </p>
-            </span>
-          </Card>
-        ))}
-      </CardWrapper>
+              <span className="source">
+                <p>
+                  Source:{" "}
+                  {e.provider[0].name
+                    ? e.provider[0].name.length > 11
+                      ? e.provider[0].name.substring(0, 11) + ".."
+                      : e.provider[0].name
+                    : "Unknown"}
+                </p>
+                <p>
+                  <a href={e.url} target="blank">
+                    Read More
+                  </a>
+                </p>
+              </span>
+            </div>
+          ))}
+        </ReactCardCarousel>
+      </div>
     );
   }
 }

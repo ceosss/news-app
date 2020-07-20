@@ -23,6 +23,7 @@ class Header extends Component {
         // this.props.handleLoading(false);
       }
       this.setState({ loading: false });
+      console.log(this.state.user.photoURL);
     });
   }
   login = () => {
@@ -98,8 +99,14 @@ class Header extends Component {
                 </Tilt>
               </div>
             ) : (
-              <h3 onClick={(this.h = this.logout)}>
-                <img src={this.state.user.photoURL} alt="dp" />
+              <h3 onClick={this.logout}>
+                <img
+                  src={
+                    this.state.user.photoURL ||
+                    require("./../Cards/background3.jpg")
+                  }
+                  alt="dp"
+                />
                 LOGOUT ?{" "}
                 <span role="img" aria-label="img">
                   🥺
