@@ -47,6 +47,7 @@ class App extends Component {
         <Header
           handleLogin={this.handleLogin}
           handleLoading={this.handleLoading}
+          className="header"
         />
         {/* {this.state.loading ? (
           <div className="spinner">
@@ -62,13 +63,14 @@ class App extends Component {
                 handleTopicChange={this.handleTopicChange}
                 handleLoading={this.handleLoading}
                 currentTopic={this.state.currentTopic}
+                className="trending-topics"
               />
             </div>
             {this.state.loading ? (
               <Spinner />
             ) : this.state.news.length !== 0 ? (
               <div className="cards">
-                <Cards data={this.state.news} />
+                <Cards data={this.state.news} className="card" />
               </div>
             ) : null}
           </div>

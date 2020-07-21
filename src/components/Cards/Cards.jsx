@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 // import { Card, CardWrapper } from "react-swipeable-cards";
 
-import ReactCardCarousel from "react-card-carousel";
+// import ReactCardCarousel from "react-card-carousel";
+import GliderComponent from "react-glider-carousel";
 
 import Background from "./background3.jpg";
+
+import "./glider.css";
 
 import "./Cards.css";
 
@@ -51,11 +54,17 @@ class Cards extends Component {
 
     return (
       // <CardWrapper style={{ paddingBottom: "100px", paddingTop: "30px" }}>
-      <div
-        // style={CONTAINER_STYLE}
-        className="container-style"
-      >
-        <ReactCardCarousel autoplay={false} autoplay_speed={15000}>
+      <div className="container-style">
+        <GliderComponent
+          hasArrows={true}
+          settings={{
+            slidesToShow: 1,
+            slidesToScroll: true,
+            itemWidth: 370,
+            exactWidth: true,
+            draggable: true,
+          }}
+        >
           {data.map((e, index) => (
             <div
               key={index}
@@ -96,7 +105,7 @@ class Cards extends Component {
               </span>
             </div>
           ))}
-        </ReactCardCarousel>
+        </GliderComponent>
       </div>
     );
   }

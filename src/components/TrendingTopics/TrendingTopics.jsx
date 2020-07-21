@@ -62,6 +62,7 @@ class TrendingTopics extends Component {
               keys={index}
               handleTopicChange={handleTopicChange}
               isCurrentTopic={index === currentTopic ? true : false}
+              className="topic"
             />
           ))}
         </div>
