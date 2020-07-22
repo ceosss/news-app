@@ -9,8 +9,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* width: 100%; */
 }
 
 .cards {
@@ -38,11 +36,10 @@
   justify-content: center;
   z-index: 10;
 }
-.container {
-}
+
 @media screen and (max-width: 620px) {
-  .container {
-    margin-bottom: 30%;
+  .cards {
+    margin-left: -30px;
   }
 }
 

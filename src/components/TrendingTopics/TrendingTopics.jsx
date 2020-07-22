@@ -6,24 +6,10 @@ import Spinner from "../Spinner/Spinner";
 
 class TrendingTopics extends Component {
   state = {
-    // trending_topics: [
-    //   { name: "Headlines", id: "Headlines" },
-    //   { name: "Central Board of Secondary Education", id: 1 },
-    //   { name: "COVID-19", id: 2 },
-    //   { name: "CBSE Exam", id: 3 },
-    //   { name: "class 12", id: 4 },
-    //   { name: "India", id: 5 },
-    //   { name: "Nepal", id: 6 },
-    //   { name: "Ashok Gehlot", id: 7 },
-    //   { name: "Sachin Pilot", id: 8 },
-    //   { name: "Sundar Pichai", id: 9 },
-    //   { name: "Indian National Congress", id: 10 },
-    // ],
     trending_topics: [{ name: "Headlines", id: "headlines" }],
     loading: false,
   };
   async componentDidMount() {
-    // this.props.handleLoading(true);
     this.setState({ loading: true });
     let {
       data: { trending_topics },
@@ -34,7 +20,6 @@ class TrendingTopics extends Component {
         loading: false,
       };
     });
-    // this.props.handleLoading(false);
   }
 
   render() {

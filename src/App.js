@@ -4,9 +4,9 @@ import Header from "./components/Header/Header";
 import TrendingTopics from "./components/TrendingTopics/TrendingTopics";
 import { getNews } from "./REQUESTS";
 import Cards from "./components/Cards/Cards";
+import Spinner from "./components/Spinner/Spinner";
 
 import "./App.css";
-import Spinner from "./components/Spinner/Spinner";
 
 class App extends Component {
   state = {
@@ -24,14 +24,12 @@ class App extends Component {
     }
   };
   handleTopicChange = async (id, key) => {
-    // this.handleLoading(true);
     this.setState({ loading: true });
     let {
       data: { value },
     } = await getNews(id);
 
     this.setState({ news: value, currentTopic: key, loading: false });
-    // this.handleLoading(false);
   };
   handleLogin = (user) => {
     this.setState({ user });
@@ -49,13 +47,6 @@ class App extends Component {
           handleLoading={this.handleLoading}
           className="header"
         />
-        {/* {this.state.loading ? (
-          <div className="spinner">
-            
-            <Spinner/>
-          </div>
-        ) : null} */}
-
         {this.state.user != null ? (
           <div className="container">
             <div className="trending-topics-div">

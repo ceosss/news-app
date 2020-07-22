@@ -12,21 +12,15 @@ class Header extends Component {
     loading: true,
   };
   componentDidMount() {
-    // this.props.handleLoading(true);
-
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
         this.props.handleLogin(this.state.user);
-        // this.props.handleLoading(false);
-      } else {
-        // this.props.handleLoading(false);
       }
       this.setState({ loading: false });
     });
   }
   login = () => {
-    // this.props.handleLoading(true);
     this.setState({ loading: true });
     auth
       .signInWithPopup(provider)
@@ -34,10 +28,9 @@ class Header extends Component {
         const user = result.user;
         this.setState({ user });
         console.log(this.state.user);
-        // console.log(user.displayName,);
 
         this.props.handleLogin(this.state.user);
-        // this.props.handleLoading(false);
+
         this.setState({ loading: false });
       })
       .catch((error) => {
@@ -46,18 +39,15 @@ class Header extends Component {
       });
   };
   logout = () => {
-    // this.props.handleLoading(true);
     this.setState({ loading: true });
     auth.signOut().then(() => {
       this.setState({ user: null });
       this.props.handleLogin(this.state.user);
-      // this.props.handleLoading(false);
+
       this.setState({ loading: false });
     });
   };
-  // componentDidUpdate() {
-  //   this.props.handleLogin(this.state.user);
-  // }
+
   render() {
     return (
       <div className="header">

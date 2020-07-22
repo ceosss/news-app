@@ -1,114 +1,74 @@
-import React, { Component } from "react";
-// import { Card, CardWrapper } from "react-swipeable-cards";
-
-// import ReactCardCarousel from "react-card-carousel";
-import GliderComponent from "react-glider-carousel";
+import React from "react";
 
 import Background from "./background3.jpg";
 
-import "./glider.css";
-
 import "./Cards.css";
 
-class Cards extends Component {
-  state = {
-    color: null,
-  };
-
-  componentDidMount() {
-    const color = this.getColor();
-    this.setState({ color });
-  }
-
-  getColor = () => {
-    const colors = [
-      "#FEBCC8",
-      "#FFFFD8",
-      "#EAEBFF",
-      "#E0FEFE",
-      "#D3EEFF",
-      "#EFB0C9",
-      "#F4C2D7",
-      "#F8DAE9",
-      "#B9D6F3",
-      "#A1C9F1",
-      "#F1E8D9",
-    ];
-    const random = Math.floor(Math.random() * colors.length);
-    console.log(colors[random]);
-
-    return colors[random];
-  };
-
-  render() {
-    const { data } = this.props;
-    // const CardStyle = {
-    //   backgroundColor: this.state.color,
-    //   borderRadius: "15px",
-    //   boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
-    //   padding: "15px 10px",
-    //   width: "375px",
-    //   height: "700px",
-    //   positions: "unset",
-    // };
-
-    return (
-      // <CardWrapper style={{ paddingBottom: "100px", paddingTop: "30px" }}>
-      <div className="container-style">
-        <GliderComponent
-          hasArrows={true}
-          settings={{
-            slidesToShow: 1,
-            slidesToScroll: true,
-            itemWidth: 370,
-            exactWidth: true,
-            draggable: true,
-          }}
+const Cards = ({ data }) => {
+  return (
+    <div className="container-style">
+      {data.map((e, index) => (
+        <div
+          key={index}
+          style={{ backgroundColor: getColor() }}
+          className="card-class"
         >
-          {data.map((e, index) => (
-            <div
-              key={index}
-              style={{ backgroundColor: this.state.color }}
-              className="card-class"
-            >
-              <img
-                src={e.image ? e.image.thumbnail.contentUrl : Background}
-                alt={e.title}
-                className="img"
-              />
-              <span className="title">
-                <h3>{e.name}</h3>
-              </span>
+          <img
+            src={e.image ? e.image.thumbnail.contentUrl : Background}
+            alt={e.title}
+            className="img"
+          />
+          <span className="title">
+            <h3>{e.name}</h3>
+          </span>
 
-              <span className="description">
-                <p>
-                  {e.description.length > 310
-                    ? e.description.substring(0, 310) + "..."
-                    : e.description}
-                </p>
-              </span>
+          <span className="description">
+            <p>
+              {e.description.length > 310
+                ? e.description.substring(0, 310) + "..."
+                : e.description}
+            </p>
+          </span>
 
-              <span className="source">
-                <p>
-                  Source:{" "}
-                  {e.provider[0].name
-                    ? e.provider[0].name.length > 11
-                      ? e.provider[0].name.substring(0, 11) + ".."
-                      : e.provider[0].name
-                    : "Unknown"}
-                </p>
-                <p>
-                  <a href={e.url} target="blank">
-                    Read More
-                  </a>
-                </p>
-              </span>
-            </div>
-          ))}
-        </GliderComponent>
-      </div>
-    );
-  }
-}
+          <span className="source">
+            <p>
+              Source:{" "}
+              {e.provider[0].name
+                ? e.provider[0].name.length > 11
+                  ? e.provider[0].name.substring(0, 11) + ".."
+                  : e.provider[0].name
+                : "Unknown"}
+            </p>
+            <p>
+              <a href={e.url} target="blank">
+                Read More
+              </a>
+            </p>
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Cards;
+
+const getColor = () => {
+  const colors = [
+    "#FEBCC8",
+    "#FFFFD8",
+    "#EAEBFF",
+    "#E0FEFE",
+    "#D3EEFF",
+    "#EFB0C9",
+    "#F4C2D7",
+    "#F8DAE9",
+    "#B9D6F3",
+    "#A1C9F1",
+    "#F1E8D9",
+  ];
+  const random = Math.floor(Math.random() * colors.length);
+  // console.log(colors[random]);
+
+  return colors[random];
+};
