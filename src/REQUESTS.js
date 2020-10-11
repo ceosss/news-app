@@ -2,8 +2,8 @@ import axios from "axios";
 
 export const getTendingTopics = async () => {
   const getTendingTopicsURL =
-    "https://api.breakingapi.com/trending?api_key=demo&locale=en-IN";
-  // "https://api.breakingapi.com/trending?api_key=5FF9D39A5CD24C99A41999DBCF17D251&locale=en-IN";
+    // "https://api.breakingapi.com/trending?api_key=demo&locale=en-IN";
+    "https://api.breakingapi.com/trending?api_key=5FF9D39A5CD24C99A41999DBCF17D251&locale=en-IN";
 
   const trendingTopics = await axios.get(getTendingTopicsURL);
   return trendingTopics;

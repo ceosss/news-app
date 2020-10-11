@@ -27,7 +27,6 @@ class Header extends Component {
       .then((result) => {
         const user = result.user;
         this.setState({ user });
-        console.log(this.state.user);
 
         this.props.handleLogin(this.state.user);
 
@@ -89,14 +88,8 @@ class Header extends Component {
               </div>
             ) : (
               <h3 onClick={this.logout}>
-                <img
-                  src={
-                    this.state.user.photoURL ||
-                    require("./../Cards/background3.jpg")
-                  }
-                  alt="dp"
-                />
-                LOGOUT ?{" "}
+                <img src={this.state.user.photoURL} alt="dp" />
+                LOGOUT ?{"  "}
                 <span role="img" aria-label="img">
                   🥺
                 </span>

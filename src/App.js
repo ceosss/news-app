@@ -47,16 +47,17 @@ class App extends Component {
           handleLoading={this.handleLoading}
           className="header"
         />
+
         {this.state.user != null ? (
           <div className="container">
-            <div className="trending-topics-div">
+            {/* <div className="trending-topics-div">
               <TrendingTopics
                 handleTopicChange={this.handleTopicChange}
                 handleLoading={this.handleLoading}
                 currentTopic={this.state.currentTopic}
                 className="trending-topics"
               />
-            </div>
+            </div> */}
             {this.state.loading ? (
               <Spinner />
             ) : this.state.news.length !== 0 ? (
@@ -66,6 +67,7 @@ class App extends Component {
             ) : null}
           </div>
         ) : null}
+
         <div className="footer">
           <p>
             MADE WITH{" "}
